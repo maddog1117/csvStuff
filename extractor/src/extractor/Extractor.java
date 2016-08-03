@@ -10,12 +10,28 @@ public class Extractor {
 		 * String csvFile = "C:/Users/curt/Desktop/work/LEADIR/data/2015_GTD_CSV.csv";
 		 * */
 		ArrayList<String[]> stuff;
+		Groups groups = new Groups();
+		
 		String csvFilePath  = "C:\\Users\\Cotty\\Documents\\GitHub\\csvStuff\\extractor\\res\\2015_GTD_CSV.csv";
 
 		try {
 			System.out.println("Read Start");
 			stuff = FileCSV.fromCSV(csvFilePath);
 			System.out.println("Read End");
+			
+			for(String[] s: stuff){
+				groups.addGroup(new Group(s[58],s[0],s[34]));
+			}
+			
+			for(Group g : groups.getGroups()){
+				
+			}
+			
+			
+			System.out.println("Groups:"+groups);
+			
+			
+			
 			System.out.println("Write Start");
 			FileCSV.toCSV(stuff, "Test");
 			System.out.println("Write End");
