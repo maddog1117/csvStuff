@@ -14,13 +14,11 @@ public class Extractor {
 
 		try {
 			stuff = FileCSV.fromCSV(csvFilePath);
+			FileCSV.toCSV(stuff, "Test");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 
-		
-		
 		/*
 		 * Steps:
 		 * 
