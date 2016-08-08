@@ -12,7 +12,11 @@ public class Group {
 	public Group(String n, String e, String target){
 		name = n;
 		events.add(e);
+		try{
 		tt[Integer.parseInt(target)-1] = 1;
+		}catch(NumberFormatException ex){
+			System.out.println(target);
+		}
 	}
 	public void addTargets(int[] i){
 		int ind = -1;
