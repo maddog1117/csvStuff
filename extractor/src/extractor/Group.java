@@ -27,14 +27,14 @@ public class Group {
 		calcPercents();
 	}
 	private void calcPercents(){
-		int totalT = 0;
-		for(int t : tt){
-			totalT+=t;
+		double totalT = 0;
+		for(double t : tt){
+			totalT+=(double)t;
 		}
 		int i = -1;
-		for(int t : tt){
+		for(double t : tt){
 			i++;
-			tp[i] = t/totalT;
+			tp[i] = (double)t/(double)totalT;
 		}
 	}
 	
@@ -61,9 +61,13 @@ public class Group {
 		return events;
 	}
 	
-	public Event getAndRemove(int i){
-		Event temp = events.get(i);
-		events.remove(i);
+	public Event getAndRemove(int i, int targ){
+		ArrayList<Event> eventsTarget = new ArrayList<Event>();
+		for(Event e : events){
+			if(e.getTargetID() == targ)eventsTarget.add(e);
+		}
+		Event temp = eventsTarget.get(i);
+		events.remove(temp);
 		return temp;
 	}
 	
