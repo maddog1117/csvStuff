@@ -10,6 +10,14 @@ public class Event {
 		tt = target34;
 	}
 	
+	public long getEventID(){
+		return id;
+	}
+	
+	public int getTargetID(){
+		return tt;
+	}
+	
 	public String toString(){
 		return id+"";
 	}
