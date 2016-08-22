@@ -11,7 +11,7 @@ public class Group {
 	
 	public Group(String n58, String e0, String target34){
 		name = n58;
-		events.add(new Event(e0,target34));
+		events.add(new Event(Long.parseLong(e0),Integer.parseInt(target34)));
 		try{
 			tt[Integer.parseInt(target34)-1] = 1;
 		}catch(NumberFormatException ex){
@@ -45,7 +45,7 @@ public class Group {
 	public int[] getTT(){
 		return tt;
 	}
-	public void addEvent(String s){
+	public void addEvent(Event s){
 		events.add(s);
 	}
 	
@@ -53,13 +53,13 @@ public class Group {
 		return name;
 	}
 
-	public String getEvent(int i) {
+	public Event getEvent(int i) {
 		return events.get(i);
 	}
 	
 	public String toString(){
 		String r = "";
-		for(String s : events)r+=s+" ";
+		for(Event s : events)r+=s+" ";
 		
 		return getName()+" Events:"+r;
 	}

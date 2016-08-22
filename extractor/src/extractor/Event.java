@@ -5,8 +5,13 @@ public class Event {
 	long id = -1;
 	int tt = -1;
 
-	public Event(String e0, String target34) {
-		// TODO Auto-generated constructor stub
+	public Event(long e0, int target34) {
+		id = e0;
+		tt = target34;
+	}
+	
+	public String toString(){
+		return id+"";
 	}
 	
 }
