@@ -1,11 +1,18 @@
 package extractor;
 
 import java.io.IOException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import extractor.Finalizer;
 
 public class Extractor {
 
 	public static void main(String[] args){
+		DateFormat df = new SimpleDateFormat("dd-MM-yy_HH-mm-ss");
+		Date dateobj = new Date();
+		
 		/*
 		 * String csvFile = "C:/Users/curt/Desktop/work/LEADIR/data/2015_GTD_CSV.csv";
 		 * */
@@ -52,13 +59,11 @@ public class Extractor {
 				}
 			}
 			
-			
-			//System.out.println("Groups:"+groups);
-			
-			
+			System.out.println("Groups:"+groups);
 			
 			System.out.println("Write Start");
-			FileCSV.toCSV(stuff, "Test");
+			//FileCSV.toCSV(Finalizer.finnish(stuff,randomSample), "nutz");
+			FileCSV.toCSV(Finalizer.finnish(stuff, randomSample), "Sample_"+df.format(dateobj));
 			System.out.println("Write End");
 		} catch (IOException e) {
 			e.printStackTrace();

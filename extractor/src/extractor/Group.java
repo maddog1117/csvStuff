@@ -17,6 +17,7 @@ public class Group {
 		}catch(NumberFormatException ex){
 			System.out.println(target34);
 		}
+		calcPercents();
 	}
 	public void addTargets(int[] i){
 		int ind = -1;
@@ -30,6 +31,9 @@ public class Group {
 		double totalT = 0;
 		for(double t : tt){
 			totalT+=(double)t;
+		}
+		if(totalT < 2){
+			System.out.println(totalT);
 		}
 		int i = -1;
 		for(double t : tt){
@@ -83,9 +87,18 @@ public class Group {
 	}
 	
 	public String toString(){
+		int counter = 0;
 		String r = "";
 		for(Event s : events)r+=s+" ";
-		
-		return getName()+" Events:"+r;
+		for(int i: tt){
+			counter++;
+			r+="["+counter+":"+i+"] ";
+		}
+		counter = 0;
+		for(double i: tp){
+			counter++;
+			r+="["+counter+":"+i+"] ";
+		}
+		return getName()+" data:"+r;
 	}
 }
