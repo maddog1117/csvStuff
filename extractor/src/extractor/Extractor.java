@@ -41,10 +41,10 @@ public class Extractor {
 					if(targetPercent > 0.0){
 						//call now
 						System.out.println("Target Type: "+b+": "+targetPercent*100+"%");
-						int rand = (int)(Math.random() * (rows[b]+1));
-						rows[b] --;
-						randomSample.add(g.getAndRemove(rand,b));
-						
+						int rand = (int)(Math.random() * (rows[b]));
+						rows[b]--;
+						if(rows[b]>0)
+							randomSample.add(g.getAndRemove(rand,b));
 					}else{
 						//System.out.println("0: "+targetPercent);
 					}

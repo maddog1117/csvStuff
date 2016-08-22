@@ -63,11 +63,22 @@ public class Group {
 	
 	public Event getAndRemove(int i, int targ){
 		ArrayList<Event> eventsTarget = new ArrayList<Event>();
+		Event temp = new Event(-1,targ);
+		int count=0;
 		for(Event e : events){
-			if(e.getTargetID() == targ)eventsTarget.add(e);
+			if(e.getTargetID() == targ){
+				eventsTarget.add(e);
+				count++;
+			}
 		}
-		Event temp = eventsTarget.get(i);
-		events.remove(temp);
+		
+		System.out.println(count+": count: "+eventsTarget.size()+": size");
+		try{
+			temp = eventsTarget.get(i);
+			events.remove(temp);
+		}catch(IndexOutOfBoundsException e){
+			
+		}
 		return temp;
 	}
 	
