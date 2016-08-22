@@ -10,9 +10,10 @@ public class Extractor {
 		 * String csvFile = "C:/Users/curt/Desktop/work/LEADIR/data/2015_GTD_CSV.csv";
 		 * */
 		ArrayList<String[]> stuff;
+		ArrayList<Event> randomSample = new ArrayList<Event>();
 		Groups groups = new Groups();
 		
-		String csvFilePath  = "C:\\Users\\Cotty\\Documents\\GitHub\\csvStuff\\extractor\\res\\2015_GTD_CSV.csv";
+		String csvFilePath  = "C:\\Users\\curt\\Documents\\csvRandy\\csvStuff\\extractor\\res\\2015_GTD_CSV.csv";
 
 		try {
 			System.out.println("Read Start");
@@ -20,15 +21,39 @@ public class Extractor {
 			System.out.println("Read End");
 			
 			for(String[] s: stuff){
-				groups.addGroup(new Group(s[58],s[0],s[34]));
-			}
-			
-			for(Group g : groups.getGroups()){
+				try{
+					groups.addGroup(new Group(s[58],s[0],s[34]));
+				}catch(NumberFormatException e){
+					//Don't add group
+					//System.out.println(e);
+				}
 				
 			}
 			
+			for(Group g : groups.getGroups()){
+				//get array of targets attacked, and totals of those attacks
+				int[] rows = g.getTT();
+				System.out.println("Group: "+ g.getName());
+				//loop through target types bucket(array)
+				for(int b=0; b<22; b++){
+					//get percent for target type(b)
+					double targetPercent = g.getTypePercent(b);
+					if(targetPercent > 0.0){
+						//call now
+						System.out.println("Target Type: "+b+": "+targetPercent*100+"%");
+						int rand = (int)(Math.random() * (rows[b]+1));
+						rows[b] --;
+						randomSample.add(g.getAndRemove(rand,b));
+						
+					}else{
+						//System.out.println("0: "+targetPercent);
+					}
+					//System.out.println(targetPercent);
+				}
+			}
 			
-			System.out.println("Groups:"+groups);
+			
+			//System.out.println("Groups:"+groups);
 			
 			
 			
@@ -53,5 +78,6 @@ public class Extractor {
 		 */
 	System.out.println("Done");
 	}
+	
 
 }
