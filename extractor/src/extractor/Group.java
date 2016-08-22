@@ -9,7 +9,7 @@ public class Group {
 	private int[] tt = new int[22];
 	private double[] tp = new double[22];
 	
-	public Group(String n58, String e0, String target34){
+	public Group(String n58, String e0, String target34) throws NumberFormatException{
 		name = n58;
 		events.add(new Event(Long.parseLong(e0),Integer.parseInt(target34)));
 		try{
@@ -55,6 +55,16 @@ public class Group {
 
 	public Event getEvent(int i) {
 		return events.get(i);
+	}
+	
+	public ArrayList<Event> getEvents(){
+		return events;
+	}
+	
+	public Event getAndRemove(int i){
+		Event temp = events.get(i);
+		events.remove(i);
+		return temp;
 	}
 	
 	public String toString(){
