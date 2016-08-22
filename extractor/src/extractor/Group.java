@@ -5,17 +5,17 @@ import java.util.ArrayList;
 public class Group {
 
 	private String name = "";
-	private ArrayList<String> events = new ArrayList<String>();
+	private ArrayList<Event> events = new ArrayList<Event>();
 	private int[] tt = new int[22];
 	private double[] tp = new double[22];
 	
-	public Group(String n, String e, String target){
-		name = n;
-		events.add(e);
+	public Group(String n58, String e0, String target34){
+		name = n58;
+		events.add(new Event(e0,target34));
 		try{
-		tt[Integer.parseInt(target)-1] = 1;
+			tt[Integer.parseInt(target34)-1] = 1;
 		}catch(NumberFormatException ex){
-			System.out.println(target);
+			System.out.println(target34);
 		}
 	}
 	public void addTargets(int[] i){
